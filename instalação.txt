@@ -1,0 +1,18 @@
+Instalar postGis - Ver Video
+sudo apt install postgresql-14-pgrouting
+
+sudo -u postgrescreatedb geodb
+
+sudo -ut postgres psql
+#grant all privileges on database geodb to admin
+
+create extension postgis;
+create schema geodata;
+set search_path = geodata,public;
+create extension pgrouting;
+
+\COPY geodata.medicoes FROM './dataset/2010.csv' WITH CSV HEADER DELIMITER ';';
+\COPY geodata.medicoes FROM './dataset/2013.csv' WITH CSV HEADER DELIMITER ';';
+\COPY geodata.medicoes FROM './dataset/2016.csv' WITH CSV HEADER DELIMITER ';';  
+\COPY geodata.medicoes FROM './dataset/2019.csv' WITH CSV HEADER DELIMITER ';';  
+\COPY geodata.medicoes FROM './dataset/2012.csv' WITH CSV HEADER DELIMITER ';';  
